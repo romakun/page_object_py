@@ -1,5 +1,6 @@
 import pytest
 from pages.errors import registration_errors as err
+import allure
 
 
 @pytest.mark.smoke

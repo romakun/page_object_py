@@ -8,4 +8,4 @@ sort_select_loc = (By.ID, 'sorter')
 sorter_action_loc = (By.CLASS_NAME, 'sorter-action')
 grid_btn_loc = (By.CLASS_NAME, 'mode-grid')
 list_btn_loc = (By.CLASS_NAME, 'mode-list')
-
+banner_span_loc = (By.XPATH, '//span[@class="not-logged-in"]')

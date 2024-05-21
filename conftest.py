@@ -11,8 +11,9 @@ def driver():
     options = Options()
     options.add_argument('window-size=1920,1080')
     options.add_argument('--headless')
+    options.add_argument('--disable-web-security')
     chrome_driver = webdriver.Chrome(options=options)
-    chrome_driver.implicitly_wait(2)
+    chrome_driver.implicitly_wait(5)
     return chrome_driver
 
 
