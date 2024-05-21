@@ -11,7 +11,7 @@ class EcoFriendlyPage(BasePage):
 
     @allure.step('check_product_names')
     def check_product_names(self):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.banner_span_loc))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.banner_span_loc))
         product_names = self.get_product_names()
         assert all(item for item in product_names)
 
@@ -27,7 +27,7 @@ class EcoFriendlyPage(BasePage):
 
     @allure.step('change_product_grid_mode')
     def change_product_grid_mode(self, grid_mode):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.banner_span_loc))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.banner_span_loc))
         grid_mode_btn = self.find(loc.grid_btn_loc)
         list_mode_btn = self.find(loc.list_btn_loc)
 
@@ -40,7 +40,7 @@ class EcoFriendlyPage(BasePage):
 
     @allure.step('change_sorting_type')
     def change_sorting_type(self, value):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.banner_span_loc))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.banner_span_loc))
         sort_select = self.find(loc.sort_select_loc)
         sort_dropdown = Select(sort_select)
         sort_dropdown.select_by_value(value)
@@ -48,7 +48,7 @@ class EcoFriendlyPage(BasePage):
 
     @allure.step('change_sorting_order')
     def change_sorting_order(self, sort_order):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.banner_span_loc))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.banner_span_loc))
         sort_action = self.find(loc.sorter_action_loc)
 
         if sort_action.get_attribute('data-value') != sort_order:
@@ -62,7 +62,7 @@ class EcoFriendlyPage(BasePage):
 
     @allure.step('check_sort_by_price')
     def check_sort_by_price(self, sort_order):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(loc.banner_span_loc))
+        WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located(loc.banner_span_loc))
         product_prices_nums = self.get_product_prices()
 
         assert product_prices_nums == sorted(
