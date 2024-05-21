@@ -9,7 +9,7 @@ from pages.eco_friendly_page import EcoFriendlyPage
 @pytest.fixture()
 def driver():
     options = Options()
-    options.add_argument('start-maximized')
+    options.add_argument('window-size=1920,1080')
     options.add_argument('--headless')
     chrome_driver = webdriver.Chrome(options=options)
     chrome_driver.implicitly_wait(2)

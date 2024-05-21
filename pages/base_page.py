@@ -13,7 +13,7 @@ class BasePage:
 
     def open_page(self):
         self.driver.get(f'{self.base_url}{self.page_path}')
-        self.driver.find_element(*self.accept_cookie_btn_loc).click()
+        #self.driver.find_element(*self.accept_cookie_btn_loc).click()
 
     def find(self, locator: tuple):
         return self.driver.find_element(*locator)
