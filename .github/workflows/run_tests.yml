@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run-tests:
-    runs-on: ubunta-latest
+    runs-on: ubuntu-latest
     name: Run UI Tests
     steps:
       - name: Checkout autotests
