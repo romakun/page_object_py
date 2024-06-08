@@ -55,21 +55,36 @@ jobs:
       - name: Save allure report
         uses: actions/upload-artifact@v4
         with:
-          name: _site
+          name: allure-report-${{ github.run_number }}
           path: _site
-          retention-days: 1
+          retention-days: 30
           
-  piblish-report:
+  publish-report:
     runs-on: ubuntu-latest
-    name: Report piblication
+    name: Report publication
     needs: run-tests
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for the pages branch
       - name: Download artifact
         uses: actions/download-artifact@v4
+        with:
+          name: allure-report-${{ github.run_number }}
+          path: allure-report-${{ github.run_number }}
+      - name: Copy reports to gh-pages
+        run: |
+          mkdir -p public/reports/${{ github.run_number }}
+          cp -r allure-report-${{ github.run_number }}/* public/reports/${{ github.run_number }}/
+          echo "Report for run ${{ github.run_number }} is available at /reports/${{ github.run_number }}/" >> public/index.html
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
       - name: Deploy to Github Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
 
         
